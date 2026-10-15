@@ -1,6 +1,17 @@
 <!doctype html>
 <html>
   <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.css" integrity="sha384-3rdsX6e5mueWyoweR9NIVmtEsUkokpBT/0ALqKKIBMr9j4qhHkaIkAcGgsE6uVlp" crossorigin="anonymous">
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.js" integrity="sha384-QFFtAGzvvj+bfgCGxXJlNZZR1nXEZgvG8tDLCCY1F19xl20WlfTYgguB4VcNdxYk" crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+  </head>
+
+  <head>
     <!-- Page setup -->
     <meta charset="utf-8">
     <title>Jonah Boan</title>
@@ -46,20 +57,28 @@
           <div id="about" class="content-region hide">
             <h2>About</h2>
             <p>
-              I am a current second-year PhD student in the mathematics department at Purdue University. I received my Bachelor's Degree from the University of North Carolina at Chapel Hill in 2025.
+              Welcome to my personal website! <br>
+			  <br>
+			  I am a current second-year PhD student in the mathematics department at Purdue University. <br>
+			  I received my Bachelor's Degree from the University of North Carolina at Chapel Hill in 2025. <br>
+			  <br>
+			  Here you will find my blog posts, where I talk about various mathematical concepts that I am studying and find interesting.
             </p>
           </div>
           
           <div id="contact" class="content-region hide">
             <h2>Blog</h2>
-            <p>
-              
-            </p>
-          </div>
-          
-        </div>
+				<ul class="blog-posts">
+					<li>
+						<a href="posts/tangent-plane.html">A Measure-Theoretic Notion of a Tangent Plane</a>
+					</li>
+				</ul>
+				
+				<p></p>
+		  </div>
       </div>
     </div>
+	</div>
 
     <footer>  
       
