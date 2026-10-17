@@ -47,10 +47,28 @@
       <div class="inner">
         <div id="content"> 
 			
-			<div id="introduction">
-				<h2>Introduction</h2>
+			<div id="review">
+				<h2>Review of the Classical Notion of Tangent Plane</h2>
 				<p>
-					Hello \( f(x) = y \)
+					Before we move on to our measure-theoretic construction of a tangent plane, we should first review the notion of a tangent plane that we are all familiar with.<br>
+					<br>
+					We can start with a function \( f : \mathbb{R}^{n-1} \rightarrow \mathbb{R} \), and let's say, for the time being, that it is smooth, i.e., all the partial derivatives exist and are continuous.<br>
+					Then the graph of \( f \), given by \( \Gamma = \left\{ (x, f(x)) \ | \ x \in \mathbb{R}^{n-1} \right\} \), is an \(n-1\) dimensional surface in \( \mathbb{R}^n \).<br>
+					To find the tangent plane at a given \( x = (a, f(a)) \in \Gamma \), take any \( v \in \mathbb{R}^{n-1} \). Then the curve
+					\[ r : \mathbb{R} \rightarrow \Gamma, \ \ r(t) = (a + tv, f(a + tv)) \]
+					is the "trace on \( \Gamma \) of the line through \( a \) in the direction of \( v \)".<br> 
+					It's derivative at \( t = 0 \) is a vector that intuitively must lie on the tangent plane, i.e.,
+					\[ r'(0) = ( v, D_v f(a) ) = ( v, \nabla f(a) \cdot v ) \in T_x \Gamma. \]
+					So then the classical notion of a tangent plane is the collection of all of these vectors:
+					\[ T_{(a,f(a))} \Gamma = \left\{ (v, D_v f(a)) \ | \ v \in \mathbb{R}^{n-1} \right\}. \]
+					It is important to note that the vector \( (-\nabla f(a), 1) \) is perpendicular to \( T_{(a,f(a))} \).
+				</p>
+			</div>
+			
+			<div id="c1-boundary">
+				<h2>Surfaces with \(C^1\) Boundary</h2>
+				<p>
+					
 				</p>
 			</div>
 			
