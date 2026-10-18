@@ -100,12 +100,16 @@
 					<br>
 					Take a \( C^1 \) surface \( \Gamma \). For \(x \in \Gamma \), and for a small number \( r > 0 \), form the set
 					\[ \Gamma_{r,x} = \{ y \ | \ ry + x \in \Gamma \}. \]
-					In other words, \( \Gamma_{r,x} \) is the surface obtained by zooming in to \( \Gamma \) at the point \( x \), cutting out that "zoomed-in" region, 
-					   shifting it to the origin, and then rescaling back to its original size.<br>
-					So, \( \Gamma_{r,x} \) consists of all those points that, after being shrunk by \( r \) and shifted to \( x \), lie on \( \Gamma \).<br>
+					So, \( \Gamma_{r,x} \) consists of all those points that, after being shrunk by \( r \) and shifted to \( x \), lie on \( \Gamma \). In other words, \( \Gamma_{r,x} \) is the surface obtained by 
+					  zooming in to \( \Gamma \) at the point \( x \) by the factor \( r \), then shifting everything to the origin. Using terminology that will be used later, we are "blowing up" the surface at the
+					  point \( x \).<br>
 					<br>
 					Intuitively, we see that, for very small \( r \), our surface \( \Gamma_{r,x} \) looks similar to the tangent plane \(T_x \Gamma \). As a result, we should expect that
 					\[ \mathcal{H}|_{\Gamma_{r,x}} \rightharpoonup \mathcal{H}|_{T_x \Gamma}. \]
+					<figure>
+						<img src="images/blowups.png" width="500" height="400">
+						<figcaption>Figure: The sets \(\Gamma_{r,x}\) to the graph of \(f(x) = x^2\) at the point \( (1,1) \) with \( r = 0.5, 0.3, 0.1 \).</figcaption>
+					</figure>
 					Can we prove that our intuition holds?<br>
 					<br>
 					A simple case would be a \(C^1\) curve in \( \mathbb{R}^n \),
@@ -147,23 +151,86 @@
 				</p>
 			</div>
 			
-			<div id="blowup-motivation">
+			<div id="rec-sets">
 				<h2>Rectifiable Sets</h2>
 				<p>
-					It is natural to ask whether our new definition of a tangent plane is more general than the classical definition. In other words, with our measure-theoretic definition, 
-					   can we obtain tangent planes on surfaces that the classical definition can't?<br>
+					Can we weaken the assumption on our sets, and still obtain tangent planes?<br>
 					A natural weaker assumption to work with than \( C^1 \) surfaces are Lipschitz surfaces. This way, "rough" behavior along the boundary is allowed, such as cusps and corners. 
 					   We can further weaken our assumption by allowing the surface to be "Lipschitz almost everywhere." This leads into the definition of a Rectifiable surface.
 					<br>
 					\[ \boxed{ \begin{gathered} \text{\underline{Definition.}}\\ 
 					     M \subset \mathbb{R}^n \text{ is countably } \mathcal{H}^k \text{-rectifiable if there exists countably many Lipschitz maps}\\ 
 						 f_i : \mathbb{R}^k \rightarrow \mathbb{R}^n \text{ such that}\\ 
-					      \mathcal{H}^k \left( M \backslash \bigcup_{i=1}^{\infty} f_i(\mathbb{R}^n) \right) = 0.
+					      \mathcal{H}^k \left( M \backslash \bigcup_{i=1}^{\infty} f_i(\mathbb{R}^n) \right) = 0.\\
+						 \text{We say that } M \text{ is locally } \mathcal{H}^k \text{-rectifiable if we also have}\\ 
+						 \mathcal{H}^k(M \cap K) < \infty\\ 
+						 \text{ for every compact } K \subset \mathbb{R}^n.
 						 \end{gathered}}
 					\]
+					Should we intuitively still be able to obtain tangent planes? Rademacher's Theorem gives us hope that our answer is yes:<br>
+					\[
+					\boxed{
+						\begin{gathered}
+							\text{\underline{Rademacher's Theorem.}}\\
+							\text{If } f : \mathbb{R}^n \rightarrow \mathbb{R}^m \text{ is a Lipschitz function, then } f \text{ is differentiable a.e. on } \mathbb{R}^n.
+						\end{gathered}
+					}
+					\]
+					So, if Lipschitz functions admit tangent planes at almost every point, and Rectifiable sets are covered almost everywhere by Lipschitz functions, we have reason to think that Rectifiable sets admit
+						tangent planes almost everywhere.<br>
 				</p>
 			</div>
 			
+			
+			<div id="rec-sets-admit-planes">
+				<h2>Rectifiable Sets Admit Tangent Planes</h2>
+				<p>
+					\[
+					\boxed{
+						\begin{gathered}
+							\text{\underline{Theorem.}}\\
+							\text{If } M \subset \mathbb{R}^n \text{ is locally } \mathcal{H}^k \text{-rectifiable, then for } \mathcal{H}^k \text{-a.e. } x \in M,\\
+							\text{ there exists a unique } k \text{-dimensional plane } \pi_x \text{ such that}\\
+							\mathcal{H}^k|_{M_{x,r}} \rightharpoonup \mathcal{H}^k|_{\pi_x}, \ \ \text{as } r \rightarrow 0^+.
+						\end{gathered}
+					}
+					\]
+					Let's discuss the idea of the proof.<br>
+					First, we note that a Rectifiable set \( M \) has the property that it can be expressed as a union of countably many Lipschitz maps \( f_i : \mathbb{R}^k \rightarrow \mathbb{R}^n \), 
+					   and bounded Borel sets \(E_i \subset \mathbb{R}^k \), such that
+					\[ M = M_0 \cup \bigcup_{i=1}^{\infty} f_i(E_i), \ \ \mathcal{H}^k(M_0) = 0. \]
+					Further, the pairs \( (f,E) \) satisfy nice enough parametrization properties ( \(Jf \neq 0, \) \( f \) is injective, etc...)<br>
+					With this in hand, we then use the property that the measure-theoretic tangent planes agree with the classical tangent planes on each piece of this decomposition, i.e.,
+					\[ \mathcal{H}^k|_{(M_i)_{x,r}} \rightharpoonup \mathcal{H}^k|_{\nabla f(x)(\mathbb{R}^k)}, \ \ \text{for each } x \in M_i. \]
+					And so, after arguing that \( M \backslash M_i \) has no contribution to the tangent plane, i.e.,
+					\[ \mathcal{H}^k|_{(M \backslash M_i)_{x,r}} \rightharpoonup 0, \ \ \text{for each } x \in M_i, \]
+					we have,
+					\[ \mathcal{H}^k|_{M_{x,r}} \rightharpoonup \mathcal{H}^k|_{\nabla f_i(x)(\mathbb{R}^k)}, \ \ \text{for all } x \in M \backslash M_0, \text{ and for some } i.\]
+					Since \( \mathcal{H}^k(M_0) = 0 \), the result follows.
+				</p>
+			</div>
+			
+			
+			<div id="converse">
+				<h2>The Converse</h2>
+				<p>
+					A natural question to ask is, can our assumption be weakened even further? In other words, do there exist sets that have tangent planes at almost every point, but are not Rectifiable?<br>
+					It turns out that the answer is no - in fact, being rectifiable is the very weakest condition needed for tangent planes to exist almost everywhere. This is shown by the following Theorem:
+					\[
+					\boxed{
+						\begin{gathered}
+							\text{\underline{Theorem.}}\\
+							\text{If } \mu \text{ is a Radon measure on } \mathbb{R}^n, M \subset \mathbb{R}^n \text{ is Borel, } \mu \text{ is concentrated on } M,\\ 
+							\text{and, for every } x \in M, \text{ there is a } k \text{-dimensional plane } \pi_x \text{ in } \mathbb{R}^n \text{ such that}\\
+							\mu_{x,r} \rightharpoonup \mathcal{H}^k|_{\pi_x}, \ \ \text{as } r \rightarrow 0^+,\\
+							\text{then } \mu = \mathcal{H}^k|_M \text{ and } M \text{ is locally } \mathcal{H}^k \text{-rectifiable.}
+						\end{gathered}
+					}
+					\]
+					Let's discuss the idea of the proof.<br>
+					
+				</p>
+			</div>
 		</div>
 	  </div>
 	</div>
