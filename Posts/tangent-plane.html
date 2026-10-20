@@ -47,7 +47,7 @@
       <div class="inner">
         <div id="content"> 
 			
-			<div id="review">
+			<!-- <div id="review">
 				<h2>Review of the Classical Notion of Tangent Plane</h2>
 				<p>
 					Before we move on to our measure-theoretic construction of a tangent plane, we should first review the notion of a tangent plane that we are all familiar with.<br>
@@ -63,25 +63,21 @@
 					\[ T_{(a,f(a))} \Gamma = \left\{ (v, D_v f(a)) \ | \ v \in \mathbb{R}^{n-1} \right\}. \]
 					It is important to note that the vector \( (-\nabla f(a), 1) \) is perpendicular to \( T_{(a,f(a))} \).
 				</p>
-			</div>
+			</div>-->
 			
 			<div id="c1-surface">
-				<h2>Tangent Planes on \(C^1\) Surfaces</h2>
+				<h2>Review of the Classical Notion of a Tangent Plane</h2>
 				<p>
-					So far our notion of a tangent plane is fairly restrictive. We have only discussed them as images of functions. What about, say, the unit ball in \( \mathbb{R}^n \)?<br>
-					To generalize our notion of a tangent plane, let's introduce the definition of a \( C^1 \) Surface:
-					
+					Before we move on to our measure-theoretic construction of a tangent plane, we should first review the notion of a tangent plane that we are all familiar with.<br>
+					<br>
+					First, we introduce the definition of a \( C^1 \) surface:
 					\[ \boxed{ \begin{gathered} \text{\underline{Definition.}}\\ 
 					     M \subset \mathbb{R}^n \text{ is a } k \text{-dimensional } C^1 \text{ surface if it is the image of a } C^1 \text{ bijection }\\ 
 					      f : E \subset \mathbb{R}^k \rightarrow M\\ 
 						\text{ with } Jf \neq 0 \text{ everywhere on } E. \end{gathered}} 
 					\]
 					
-					Here \( Jf(x) = \sqrt{\det ( \nabla f(x)^T \nabla f(x))}\) is the Jacobian of \( f \).<br>
-					As a side note, why do we require the Jacobian to be nonzero everywhere? Take the function \( f(t) = (t^2, t^3) \). This is \( C^1 \), bijective onto its image, but
-					\[ Jf(t) = \sqrt{\begin{pmatrix} 2t & 3t^2 \end{pmatrix} \begin{pmatrix} 2t\\ 3t^2 \end{pmatrix}} \implies Jf(0) = 0. \]
-					As we can see by picture, \( f \) has a cusp at the origin, which absolutely violates what we know \(C^1 \) to mean!<br>
-					<img src="images/cusp.png" width="500" height="400">
+					Here \( Jf(x) = \sqrt{\det ( \nabla f(x)^T \nabla f(x))}\) is the Jacobian of \( f \). The requirement that \( Jf \neq 0 \) is just to prevent our surface from having cusps.<br>
 					<br>
 					With this definition of a \( C^1 \) surface in hand, we can reformulate our notion of a tangent plane as
 					\[ T_{f(x)} M = \left\{ \nabla f(x)y \ | \ y \in \mathbb{R}^k \right\}. \]
@@ -146,8 +142,7 @@
 					   \( \mathcal{H}|_{\Gamma_{x_0,r}} \rightharpoonup \mathcal{H}|_{T_{x_0} \Gamma}\).<br>
 					As a result, it is natural to define a tangent plane to a Borel set \( M \subset \mathbb{R}^n \) at \( x \in M \) as the \( k \)-dimensional surface \( \pi_x \) such that
 					   \( \mathcal{H}|_{M_{x,r}} \rightharpoonup \mathcal{H}|_{\pi_x} \), if it exists.<br>
-					In this case, we call \( \mathcal{H}|_{M_{x,r}} \) the \( k \)-dimensional blow-ups of \( \mathcal{H}|_M \) at \( x \) (I presume this name comes from the process we described earlier, we are essentially
-						"blowing up" the small region of \( M \) near \( x \)).
+					In this case, we call \( \mathcal{H}|_{M_{x,r}} \) the \( k \)-dimensional blow-ups of \( \mathcal{H}|_M \) at \( x \).
 				</p>
 			</div>
 			
@@ -198,7 +193,7 @@
 					Let's discuss the idea of the proof.<br>
 					First, we note that a Rectifiable set \( M \) has the property that it can be expressed as a union of countably many Lipschitz maps \( f_i : \mathbb{R}^k \rightarrow \mathbb{R}^n \), 
 					   and bounded Borel sets \(E_i \subset \mathbb{R}^k \), such that
-					\[ M = M_0 \cup \bigcup_{i=1}^{\infty} f_i(E_i), \ \ \mathcal{H}^k(M_0) = 0. \]
+					\[ M = M_0 \cup \bigcup_{i=1}^{\infty} f_i(M_i), \ \ \mathcal{H}^k(M_0) = 0. \]
 					Further, the pairs \( (f,E) \) satisfy nice enough parametrization properties ( \(Jf \neq 0, \) \( f \) is injective, etc...)<br>
 					With this in hand, we then use the property that the measure-theoretic tangent planes agree with the classical tangent planes on each piece of this decomposition, i.e.,
 					\[ \mathcal{H}^k|_{(M_i)_{x,r}} \rightharpoonup \mathcal{H}^k|_{\nabla f(x)(\mathbb{R}^k)}, \ \ \text{for each } x \in M_i. \]
@@ -215,7 +210,7 @@
 				<h2>The Converse</h2>
 				<p>
 					A natural question to ask is, can our assumption be weakened even further? In other words, do there exist sets that have tangent planes at almost every point, but are not Rectifiable?<br>
-					It turns out that the answer is no - in fact, being rectifiable is the very weakest condition needed for tangent planes to exist almost everywhere. This is shown by the following Theorem:
+					It turns out that the answer is no - in fact, being rectifiable is the absolute weakest condition needed for tangent planes to exist almost everywhere. This is shown by the following Theorem:
 					\[
 					\boxed{
 						\begin{gathered}
@@ -228,6 +223,31 @@
 					}
 					\]
 					Let's discuss the idea of the proof.<br>
+					Our goal is to show that the set \( M \) can be covered up to a set of measure zero by images of Lipschitz maps.<br>
+					But recall the geometric interpretation of Lipschitz function: A Lipschitz function is a function such that, at every point we can place the vertex of a cone, and the graph of the function will lie entirely
+					  within that cone. Further, the "size of the opening" of the cone remains constant for every point.
+					<figure>
+						<img src="images/lipschitz_in_cone.jpg" width="400" height="300">
+						<figcaption>Figure: The graph of a Lipschitz function lies entirely within a cone.</figcaption>
+					</figure>
+					So let \( M' \subset M \) be compact. If we had that, uniformly for \( x \in M' \),
+					\[ \lim_{r \rightarrow 0^+} \frac{\mu(B(x,r))}{\mathcal{L}^k(B(x,r))} = 1\]
+					\[ \lim_{r \rightarrow 0^+} \frac{\mu(B(x,r) \backslash (x + K(\pi_x,1)))}{\mathcal{L}^k(B(x,r))} = 0,\]
+					then we should expect \( M' \) to be \( \mathcal{H}^k \)-rectifiable.<br>
+					(Here, \( K(\pi, t) \) denotes the cone \( K(\pi, t) = \{ y \in \mathbb{R}^n \ | \ |y| < \sqrt{1 + t^2} | p_{\pi} y | \} \), where \( p_{\pi} : \mathbb{R}^n \rightarrow \mathbb{R}^n \) 
+					  is the orthogonal projection onto \( \pi \). These cones contain \( \pi \) for every \( t > 0 \). They converge to \( \pi \) as \( t \rightarrow 0^+ \), and they converge to \( \mathbb{R}^n \)
+					  as \( t \rightarrow \infty \)).
+					<figure>
+						<img src="images/cones_containing_pi.png" width="300" height="200">
+						<figcaption>Credit: Sets of Finite Perimeter by Maggi.</figcaption>
+					</figure>
+					Why should we expect rectifiability? The first limit relation essentially says that \( M' \) is \( k \)-dimensional at very small scales, since, for \( r \) very small, 
+					  \( \mu(B(x,r)) \approx \mathcal{L}^k(B(x,r)) \).<br>
+					The second limit relation essentially says that the "amount" of \( M' \) lying inside \( B(x,r) \) but outside the cone \( x + K(\pi_x,1) \) is neglegible compared to the total measure of \( B(x,r) \).<br>
+					Contrasting with our geometric interpretation of Lipschitz functions, \( M' \) behaves "almost" like a Lipschitz function at very small scales.<br>
+					<br>
+					The bulk of the proof is making this intuition rigorous. Also, it can be shown that these limit relations do indeed hold for compact sets \( M' \subset M \). By applying this result to the compact sets
+					  \( M \cap B(0,R) \), we obtain that \( M \) is rectifiable.
 					
 				</p>
 			</div>
